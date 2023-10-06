@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        div
+        {
+            display: grid;
+            place-items: center;
+            padding:20px;
+        }
+        form
+        {
+            padding:20px;
+            border-radius:10px;
+        }
+        label 
+        {
+            padding:5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form">
+        <form id="userForm">
+            <label>Username:</label>
+            <input type="text" id="username" name="username"><br><br>
+
+            <label>Password:</label>
+            <input type="password" id="password" name="password"><br><br>
+
+            <label>Retype Password:</label>
+            <input type="password" id="retypepwd" name="retypepwd"><br><br>
+
+            <label>Phone Number:</label>
+            <input type="text" id="phoneNumber" name="phoneNumber"><br><br>
+
+            <label>Pin Code:</label>
+            <input type="text" id="pinCode" name="pinCode"><br><br>
+
+            <button type="button"onclick="validateForm()">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        function validateForm()
+        {
+            var username=document.getElementById('username').value;
+            var password=document.getElementById('password').value;
+            var retypepwd=document.getElementById('retypepwd').value;
+            var phoneNumber=document.getElementById('phoneNumber').value;
+            var pinCode=document.getElementById('pinCode').value;
+
+            var validationMssg="";
+
+            if(username.length<8){
+                validationMssg+="Username should be at least 8 characters.\n";
+            }
+            if(password.length<8)
+            {
+                validationMssg+="Password should be at least 8 characters.\n";
+            }
+            if(password!==retypepwd)
+            {
+                validationMssg+="Passwords do not match.\n";
+            }
+            if(phoneNumber.length>10 || phoneNumber.length<10)
+             {
+                validationMssg+="Phone number should be 10 digits.\n";
+            }
+            if(pinCode.length>6 || pinCode.length<6)
+             {
+                validationMssg+="Pin code should be 6 digits.\n";
+            }
+            if(validationMssg==="")
+            {
+                validationMssg="Form is valid.";
+            }
+            window.alert(validationMssg);
+        }
+    </script>
+</body>
+</html>
